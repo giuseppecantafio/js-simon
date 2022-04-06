@@ -37,22 +37,41 @@ console.log(numeriUtente);
 let app = document.getElementById('app');
     app.innerHTML = `<h1>
                         Memorizza questi numeri ${numeriUtente}
-                     <h1>`;
+                     </h1>`;
 let h2 = document.createElement('h2');
 h2.style.color = 'red';
 
-// creo una funzione timeout che mi va a nascondere div app dopo 30 secondi
+// creo una funzione timeout che mi va a nascondere div app dopo 30 secondi, mettendo anche un timer ansiogeno
 let tempo = 4;
 const timer = setInterval(hideOnBush, 1000);
 function hideOnBush(){
     tempo = tempo - 1;
     console.log(tempo);
-    h2.innerHTML ='';
+    h2.innerHTML = '';
     let textInfo = document.createTextNode(`Ti rimangono solo: ${tempo} secondi`);
     h2.appendChild(textInfo);
     app.append(h2);
     if (tempo === 0){
         clearInterval(timer);
         app.classList.add('d-none')
+        inserisciNumeri();
     }
 }
+
+// mi creo dei prompt per inserire i numeri e li salvo in un array numeriInseriti
+
+let  numeriInseriti = [];
+
+function inserisciNumeri(){
+    while(numeriInseriti.length <= 4){
+        let num = parseInt(prompt('Inserisci un numero, no duplicati'));
+        if (!numeriInseriti.includes(num)){
+            numeriInseriti.push(num);
+        } else {
+            alert('Non inserire duplicati')
+        }
+    }
+console.log('numeriInseriti è ' + numeriInseriti)
+}
+
+// vediamo chi ha vinto
