@@ -28,3 +28,31 @@ while(numeriCasuali.length <= 4){
     }
 }
 console.log(numeriCasuali);
+
+// trasformo l'array in modo più leggibile con join
+let numeriUtente = numeriCasuali.join('-');
+console.log(numeriUtente);
+
+// vado a stampare l'array di numeri casuali all'interno del mio div app
+let app = document.getElementById('app');
+    app.innerHTML = `<h1>
+                        Memorizza questi numeri ${numeriUtente}
+                     <h1>`;
+let h2 = document.createElement('h2');
+h2.style.color = 'red';
+
+// creo una funzione timeout che mi va a nascondere div app dopo 30 secondi
+let tempo = 4;
+const timer = setInterval(hideOnBush, 1000);
+function hideOnBush(){
+    tempo = tempo - 1;
+    console.log(tempo);
+    h2.innerHTML ='';
+    let textInfo = document.createTextNode(`Ti rimangono solo: ${tempo} secondi`);
+    h2.appendChild(textInfo);
+    app.append(h2);
+    if (tempo === 0){
+        clearInterval(timer);
+        app.classList.add('d-none')
+    }
+}
