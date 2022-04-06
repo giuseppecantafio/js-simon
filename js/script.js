@@ -5,8 +5,6 @@
 4 - Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
 */
 
-
-
 // funzione per generare numeri casuali
 
 function getRandomInt(min, max) {
@@ -15,11 +13,8 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-// genero array contenente i numeri casuali
-
+// tramite al ciclo while vado a prendermi 5 numeri casuali attraverso la funzione getRandomInt e li inserisco nel mio array numeriCasuali
 const numeriCasuali = [];
-
-// ora tramite al ciclo while vado a prendermi 5 numeri casuali attraverso la funzione getRandomInt e li inserisco nel mio array numeriCasuali
 
 while(numeriCasuali.length <= 4){
     let numero = getRandomInt(1, 100);
@@ -72,6 +67,32 @@ function inserisciNumeri(){
         }
     }
 console.log('numeriInseriti è ' + numeriInseriti)
+confronto();
 }
 
-// vediamo chi ha vinto
+// vediamo quanto è bravo l'utente e comunico i risultati
+let confrontoFinale = [];
+
+function confronto(){
+     for (let i = 0; i <= numeriCasuali.length; i++){
+        if (numeriInseriti.includes(numeriCasuali[i])){
+            confrontoFinale.push(numeriCasuali[i])
+     }
+
+}
+console.log('Questi sono i numeri identici ' + confrontoFinale);
+let risultato = confrontoFinale.join('-');
+console.log(risultato);
+app.innerHTML = '';
+app.classList.remove('d-none');
+if (risultato.length === 0){
+    app.innerHTML = `<h1>
+                    Non hai azzeccato nessun nessun numero....
+                    </h1>`;
+} else {
+    app.innerHTML = `<h1>
+                    I numeri identici inseriti sono ${risultato}
+                    </h1>`;
+}
+}
+
