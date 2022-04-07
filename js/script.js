@@ -37,7 +37,7 @@ let h2 = document.createElement('h2');
 h2.style.color = 'red';
 
 // creo una funzione timeout che mi va a nascondere div app dopo 30 secondi, mettendo anche un timer ansiogeno
-let tempo = 4;
+let tempo = 30;
 const timer = setInterval(hideOnBush, 1000);
 function hideOnBush(){
     tempo = tempo - 1;
